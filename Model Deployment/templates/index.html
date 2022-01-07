@@ -1,0 +1,229 @@
+<html>
+<body style="background-color:LightGray;">
+    <br>
+    <h3 style= "font-family:verdana; color:red; text-align:center; font-size:200%;" >PREDICTING ADVERSE EFFECTS OF VACCINES ON INDIVIDUALS</h3>
+	<br>
+ 
+<style>
+      div {
+        margin-bottom: 10px;
+      }
+      label {
+        display: inline-block;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+  <form action="{{ url_for('predict')}}" method="POST">
+    <label for="VAX_TYPE" style= "font-weight:bold; font-size:125%;">  Vaccine Type: </label>
+    <select id="VAX_TYPE" name="VAX_TYPE">
+      <option value="1.095480e-01">Coronavirus 2019 vaccine</option>
+      <option value="1.751345e-01">Varicella-zoster vaccine</option>
+      <option value="2.671181e-01">Influenza virus vaccine, quadrivalent, recombinant</option>
+      <option value="1.113402e-01">Human papillomavirus 9-valent</option>
+      <option value="1.196054e-01">Pneumococcal vaccine, polyvalent</option>
+      <option value="5.537459e-02">Varivax-varicella virus live</option>
+      <option value="2.067039e-01">Diphtheria and tetanus toxoids and acellular pertussis vaccine</option>
+      <option value="1.587302e-01">Hepatitis A</option>
+	  <option value="1.478873e-01">Diphtheria and tetanus toxoids and acellular pertussis vaccine + inactivated poliovirus vaccine + haemophilus B conjugate vaccine</option>
+	  <option value="2.121212e-01">Tetanus toxoid, reduced diphtheria toxoid and acellular pertussis vaccine, adsorbed</option>
+	  <option value="1.544402e-01">Pneumococcal 13-valent conjugate vaccine</option>
+	  <option value="2.000000e-01">Diphtheria and tetanus toxoids and acellular pertussis vaccine + hepatitis B + inactivated poliovirus vaccine</option>
+	  <option value="3.561644e-01">Diphtheria and tetanus toxoids and acellular pertussis vaccine + inactivated poliovirus vaccine</option>
+	  <option value="1.674419e-01">Influenza virus vaccine, quadrivalent, recombinant</option>
+	  <option value="2.336449e-01">Hepatitis B virus vaccine</option>
+	  <option value="3.431373e-01">Meningococcal group b vaccine, rDNA absorbed</option>
+	  <option value="2.688172e-01">Measles, mumps and rubella virus vaccine, live</option>
+	  <option value="2.897727e-01">Influenza virus vaccine, quadrivalent, cell-culture-derived</option>
+	  <option value="3.928571e-01">Meningococcal conjugate vaccine</option>
+	  <option value="4.789916e-01">Influenza virus vaccine, quadrivalent, adjuvant</option>
+	  <option value="9.615385e-02">Anthrax vaccine</option>
+	  <option value="4.166667e-02">Cholera vaccine</option>
+	  <option value="3.098592e-01">Measles, mumps, rubella and varicella vaccine live</option>
+	  <option value="3.000000e-01">Haemophilus B conjugate vaccine</option>
+	  <option value="1.395349e-01">Rotavirus vaccine, live, oral, pentavalent</option>
+	  <option value="1.428571e-01">Poliovirus vaccine inactivated</option>
+	  <option value="2.413793e-01">Influenza virus vaccine, trivalent, adjuvant</option>
+	  <option value="6.896552e-02">Rabies virus vaccine</option>
+	  <option value="1.739130e-01">Yellow fever vaccine</option>
+	  <option value="1.250391e-08">Influenza virus vaccine quadrivalent (nasal spray)</option>
+	  <option value="1.875000e-01">Ebola Zaire vaccine</option>
+	  <option value="1.875000e-01">Rotavirus vaccine, live, oral</option>
+	  <option value="5.333330e-01">Tetanus and diphtheria toxoids, adult</option>
+	  <option value="4.999935e-01">Hepatitis A + hepatitis B</option>
+	  <option value="1.666657e-01">Influenza virus vaccine, trivalent</option>
+	  <option value="5.044208e-06">Typhoid vaccine</option>
+	  <option value="7.775542e-01">Smallpox vaccine</option>
+	  <option value="2.747359e-04">Adenovirus type 4 and 7 vaccine, live oral</option>
+	  <option value="7.436501e-04">Dengur fever vaccine</option>
+	  <option value="1.998468e-03">Japanese encephalitis virus vaccine, inactivated</option>
+	  <option value="1.984012e-01">Diphtheria and tetanus toxoids, pediatric</option>
+	  <option value="1.324477e-02">Diphtheria and tetanus toxoids and pertussis vaccine + inactivated poliovirus vaccine + haemophilus B conjugate vaccine (tetanus toxoid conjugate)</option>
+	  <option value="7.609410e-01">Human papillomavirus quadrivalent</option>
+	  <option value="1.111111e-01">Meningococcal conjugate + Hib</option>
+	  <option value="1.111111e-01">Diphtheria and tetanus toxoids and pertussis vaccine</option>
+    </select>
+    <br>
+	<br>
+	<br>
+	<label for="VAX_MANU" style= "font-weight:bold; font-size:125%;">  Vaccine Manufacturer: </label>
+    <select id="VAX_MANU" name="VAX_MANU">
+      <option value="0.11172395237774937">PFIZER\BIONTECH</option>
+      <option value="0.11295669485138768">MODERNA</option>
+      <option value="0.08469644688986291">JANSSEN</option>
+      <option value="0.207688908528502">GLAXOSMITHKLINE BIOLOGICALS</option>
+      <option value="0.11568123393316196">MERCK & CO. INC.</option>
+      <option value="0.22956521739130434">SANOFI PASTEUR</option>
+      <option value="0.34085778781038373">SEQIRUS, INC.</option>
+      <option value="0.18064516129032257">PFIZER\WYETH</option>
+	  <option value="0.3018867924528302">NOVARTIS VACCINES AND DIAGNOSTICS</option>
+	  <option value="0.16744186046511628">PROTEIN SCIENCES CORPORATION</option>
+	  <option value="0.09615384615384616">EMERGENT BIOSOLUTIONS</option>
+	  <option value="0.041666666666666664">PAXVAX</option>
+	  <option value="0.2">DYNAVAX TECHNOLOGIES CORPORATION</option>
+	  <option value="1.2503906897541759e-08">MEDIMMUNE VACCINES, INC.</option>
+	  <option value="0.49964570231328864">MASS. PUB HLTH BIOL LAB</option>
+	  <option value="0.000274735906292739">TEVA PHARMACEUTICALS</option>
+	  <option value="0.0019984677735657274">BERNA BIOTECH, LTD.</option>
+	  <option value="0.0019984677735657274">INTERCELL AG</option>
+	  <option value="0.01324476911356863">MSP VACCINE COMPANY</option>
+    </select>
+    <br>
+	<br>
+	<br>
+	<label for="VAX_DOSE_SERIES" style= "font-weight:bold; font-size:125%;">  Total Doses: </label>
+    <select id="VAX_DOSE_SERIES" name="VAX_DOSE_SERIES">
+      <option value="0.115993980607334">1</option>
+      <option value="0.1063064467632549">2</option>
+      <option value="0.10229991762660007">Unknown</option>
+      <option value="0.12294168626965457">3</option>
+      <option value="0.2204968944099379">4</option>
+      <option value="0.20503597122302158">5</option>
+      <option value="0.05970149253731343">6</option>
+      <option value="0.15025906735751296">7+</option>
+    </select>
+    <br>
+	<br>
+	<br>
+	<label for="STATE" style= "font-weight:bold; font-size:125%;">  State: </label>
+    <select id="STATE" name="STATE">
+      <option value="0.128083">California</option>
+      <option value="0.093616">Florida</option>
+      <option value="0.109137">New York</option>
+      <option value="0.121878">Texas</option>
+      <option value="0.078715">Michigan</option>
+      <option value="0.094423">Ohio</option>
+      <option value="0.145877">Pennysylvania</option>
+      <option value="0.103588">Illinois</option>
+	  <option value="0.094102">Georgia</option>
+	  <option value="0.091232">Indiana</option>
+	  <option value="0.118416">New Jersey</option>
+	  <option value="0.089786">Minnesota</option>
+	  <option value="0.128737">Washington</option>
+	  <option value="0.138122">North Carolina</option>
+	  <option value="0.102152">Arizona</option>
+	  <option value="0.14613">Virginia</option>
+	  <option value="0.118272">Maryland</option>
+	  <option value="0.073040">Missouri</option>
+	  <option value="0.112607">Colorado</option>
+	  <option value="0.096633">Wisconsin</option>
+	  <option value="0.104633">Kentucky</option>
+	  <option value="0.148195">Massachusetts</option>
+	  <option value="0.101413">Tennessee</option>
+	  <option value="0.131747">Oregon</option>
+	  <option value="0.105447">Connecticut</option>
+	  <option value="0.127693">South Carolina</option>
+	  <option value="0.083392">Louisiana</option>
+	  <option value="0.109034">Iowa</option>
+	  <option value="0.096201">Oklahoma</option>
+	  <option value="0.114263">Utah</option>
+	  <option value="0.126144">Alabama</option>
+	  <option value="0.045034">Montana</option>
+	  <option value="0.116892">Kansas</option>
+	  <option value="0.083936">New Hampshire</option>
+	  <option value="0.128114">Arkansas</option>
+	  <option value="0.126316">Nevada</option>
+	  <option value="0.074130">Puerto Rico</option>
+	  <option value="0.118126">Hawaii</option>
+	  <option value="0.139980">New Mexico</option>
+	  <option value="0.085114">Alaska</option>
+	  <option value="0.116460">Nebraska</option>
+	  <option value="0.088127">West Virginia</option>
+	  <option value="0.072273">South Dakota</option>
+	  <option value="0.140037">Mississippi</option>
+	  <option value="0.171897">Maine</option>
+	  <option value="0.084974">Delaware</option>
+	  <option value="0.201546">Idaho</option>
+	  <option value="0.077601">North Dakota</option>
+	  <option value="0.182645">Rhode Island</option>
+	  <option value="0.166081">District of Columbia</option>
+	  <option value="0.216346">Vermont</option>
+	  <option value="0.128144">Wyoming</option>
+	  <option value="0.164062">Guam</option>
+	  <option value="0.017544">Northern Mariana Islands</option>
+	  <option value="0.040000">American Samoa</option>
+	  <option value="0.511628">Virgin Islands</option>
+	  <option value="0.069767">Marshall Islands</option>
+	  <option value="0.125000">Baker Island</option>
+	  <option value="0.083334">Micronesia</option>
+	  <option value="0.000005">Navassa Island</option>
+	  <option value="0.000101">Palmyra Atoll</option>
+	  <option value="0.029882">Midway Islands</option>
+    </select>
+    <br>
+	<br>
+	<br>
+	<label for="SEX" style= "font-weight:bold; font-size:125%;">  Gender: </label>
+    <select id="SEX" name="SEX">
+      <option value="0.13078223766919958">Female</option>
+      <option value="0.07857111238988979">Male</option>
+      <option value="0.067420814479638">Others</option>
+    </select>
+    <br>
+	<br>
+	<br>
+	<label for="AGE_GROUP" style= "font-weight:bold; font-size:125%;">  Age Group: </label>
+    <select id="AGE_GROUP" name="AGE_GROUP">
+      <option value="0.07808341852036463">>60</option>
+      <option value="0.1414812312087555">30-59</option>
+      <option value="0.12095784610942688">18-30</option>
+      <option value="0.10380324231030019">13-18</option>
+      <option value="0.17460664335664336">0-12</option>
+    </select>
+    <br>
+	<br>
+	<br>
+	<label for="V_ADMINBY" style= "font-weight:bold; font-size:125%;">  Vaccine Administered By: </label>
+    <select id="V_ADMINBY" name="V_ADMINBY">
+      <option value="0.12156370623925064">Private</option>
+      <option value="0.12713865728468843">Pharmacy or Store</option>
+      <option value="0.06342829315802288">Unknown</option>
+      <option value="0.11624747219413549">Others</option>
+      <option value="0.12700718764337054">Public</option>
+      <option value="0.04009906207187269">Nursing home or Senior living facility</option>
+      <option value="0.18226500102396068">Workplace Clinic</option>
+      <option value="0.10533750378367471">Military</option>
+	  <option value="0.16651982378854627">School or Student health clinic</option>
+    </select>
+    <br>
+	<br>
+	<br>
+    <label for="NUMDAYS BETWEEN VAX_DATE & ONSET_DATE" style= "font-weight:bold; font-size:125%;">  Number of Days between Vaccine Date and Adverse Event Onset Date: </label>
+    <input type="text" id="NUMDAYS BETWEEN VAX_DATE & ONSET_DATE" name="NUMDAYS BETWEEN VAX_DATE & ONSET_DATE"> Note: Enter the number of days in the range of [0 - 365]
+    <br>
+	<br>
+	<br>
+	<label for="SYMPTOMS POST VACCINATION" style= "font-weight:bold; font-size:125%;">  Symptoms experienced after Vaccination: </label>
+    <input type="text" id="SYMPTOMS POST VACCINATION" name="SYMPTOMS POST VACCINATION"> Note:  For multiple symptoms, enter the data separated by comma
+    <br>
+	<br>
+	<br>
+    <input type="submit" style= "font-size:150%; color:blue; border:2px solid blue;" value="PREDICT">
+  </form>  
+  
+  {{ prediction_text }} 
+  
+</div>
+</body>
+</html>
